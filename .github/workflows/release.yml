@@ -22,5 +22,7 @@ jobs:
         chmod +x ./.github/scripts/increment_version.sh
         current=$(cat ./.github/NEXT_VERSION)
         echo $current
-        source ./.github/scripts/increment_version.sh -M "$current"
-        echo "${a[0]}.${a[1]}.${a[2]}" > .github/NEXT_VERSION
+        source ./.github/scripts/increment_version.sh
+        next=$(increment_version "$current" 0)
+        echo $next
+        echo $next > ./.github/NEXT_VERSION

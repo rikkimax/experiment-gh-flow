@@ -1,54 +1,11 @@
-#!/bin/bash
-
-# MIT: https://github.com/fmahnke/shell-semver/tree/master
-
-# Increment a version string using Semantic Versioning (SemVer) terminology.
-
-# Parse command line options.
-
-while getopts ":Mmp" Option
-do
-  case $Option in
-    M ) major=true;;
-    m ) minor=true;;
-    p ) patch=true;;
-  esac
-done
-
-shift $(($OPTIND - 1))
-
-version=$1
-
-# Build array from version string.
-
-a=( ${version//./ } )
-
-# If version string is missing or has the wrong number of members, show usage message.
-
-if [ ${#a[@]} -ne 3 ]
-then
-  echo "usage: $(basename $0) [-Mmp] major.minor.patch"
-  exit 1
-fi
-
-# Increment version numbers as requested.
-
-if [ ! -z $major ]
-then
-  ((a[0]++))
-  a[1]=0
-  a[2]=0
-fi
-
-if [ ! -z $minor ]
-then
-  ((a[1]++))
-  a[2]=0
-fi
-
-if [ ! -z $patch ]
-then
-  ((a[2]++))
-fi
-
-echo "${a[0]}.${a[1]}.${a[2]}"
+# https://stackoverflow.com/a/64390598
+# increment_version "0.0.0" 0
+# 0 for major, 1 for minor, 2 patch
+increment_version() {
+  local delimiter=.
+  local array=($(echo "$1" | tr $delimiter '\n'))
+  array[$2]=$((array[$2]+1))
+  if [ $2 -lt 2 ]; then array[2]=0; fi
+  if [ $2 -lt 1 ]; then array[1]=0; fi
+  echo $(local IFS=$delimiter ; echo "${array[*]}")
+}
