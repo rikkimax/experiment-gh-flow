@@ -17,7 +17,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         INPUT_config: .github/release.tagpr
     - run: |
-        bash -c "
+        bash -c " \
         current=$(cat ./.github/NEXT_VERSION) ;\
         increment=$(cat ./.github/scripts/increment_version.sh) ;\
         next=$(bash -c "$increment" -- -M $current) ;\
