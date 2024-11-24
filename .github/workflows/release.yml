@@ -19,6 +19,6 @@ jobs:
     - run: |
         bash -c "
         next=$(cat .github/NEXT_VERSION) ;\
-        next=$(bash ./.github/scripts/increment_version.sh -M $next) ;\
+        next=$(bash .github/scripts/increment_version.sh -M $next) ;\
         echo $next > .github/NEXT_VERSION \
         "
