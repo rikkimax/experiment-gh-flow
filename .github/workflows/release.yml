@@ -18,7 +18,7 @@ jobs:
         INPUT_config: .github/release.tagpr
     - run: |
         bash -c "
-        next=$(cat .github/NEXT_VERSION) ;\
-        next=$(bash .github/scripts/increment_version.sh -M $next) ;\
+        current=$(cat ./.github/NEXT_VERSION) ;\
+        next=$(eval ./.github/scripts/increment_version.sh -M $current) ;\
         echo $next > .github/NEXT_VERSION \
         "
