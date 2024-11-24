@@ -45,7 +45,7 @@
 [tagpr]
 	vPrefix = false
 	releaseBranch = master
-	versionFile = .github/NEXT_VERSION
-    tagpr.commitPrefix = [Next Release]
-    tagpr.changelog = false
-    tagpr.command = mv .github/NEXT_VERSION .github/VERSION
+	versionFile = ./.github/VERSION
+    commitPrefix = [Next Release]
+    changelog = false
+    command = mv .github/NEXT_VERSION .github/VERSION
