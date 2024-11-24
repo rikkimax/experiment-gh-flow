@@ -3,6 +3,7 @@ name: Create next release by PR
 on: push
 
 jobs:
+
   release-trigger:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
