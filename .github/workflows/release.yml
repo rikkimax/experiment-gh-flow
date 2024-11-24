@@ -19,6 +19,7 @@ jobs:
     - run: |
         bash -c "
         current=$(cat ./.github/NEXT_VERSION) ;\
+        chmod u+r+x ./.github/scripts/increment_version.sh ;\
         next=$(eval ./.github/scripts/increment_version.sh -M $current) ;\
         echo $next > .github/NEXT_VERSION \
         "
