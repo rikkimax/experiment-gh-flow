@@ -46,6 +46,6 @@
 	vPrefix = false
 	releaseBranch = stable
 	versionFile = ./.github/VERSION
-    commitPrefix = [next_release]
+    commitPrefix = [next-release]
     changelog = false
     command = mv .github/NEXT_VERSION .github/VERSION
