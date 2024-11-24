@@ -46,6 +46,6 @@
 	vPrefix = false
 	releaseBranch = master
 	versionFile = ./.github/VERSION
-    commitPrefix = [Next Release]
-    changelog = true
+    commitPrefix = "[Next Release]"
+    changelog = false
     command = mv .github/NEXT_VERSION .github/VERSION
