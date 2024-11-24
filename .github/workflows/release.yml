@@ -22,7 +22,7 @@ jobs:
         echo $current ;\
         increment=$(cat ./.github/scripts/increment_version.sh) ;\
         echo $increment ;\
-        next=$(bash -c "$increment" -- -M $current) ;\
+        next=$(bash -c "$increment" -M $current) ;\
         echo $next ;\
         echo $next > .github/NEXT_VERSION \
         "
