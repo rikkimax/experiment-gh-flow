@@ -16,13 +16,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         INPUT_config: .github/release.tagpr
+    - run: chmod +x ./.github/scripts/increment_version.sh
     - run: |
         bash -c "\
         current=$(cat ./.github/NEXT_VERSION) ;\
         echo $current ;\
-        increment=$(cat ./.github/scripts/increment_version.sh) ;\
-        echo $increment ;\
-        next=$(bash -c "$increment" -M $current) ;\
+        next=$(./.github/scripts/increment_version.sh -M $current) ;\
         echo $next ;\
         echo $next > .github/NEXT_VERSION \
         "
