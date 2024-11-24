@@ -48,3 +48,4 @@
 	versionFile = .github/NEXT_VERSION
     tagpr.commitPrefix = [Next Release]
     tagpr.changelog = false
+    tagpr.command = mv .github/NEXT_VERSION .github/VERSION

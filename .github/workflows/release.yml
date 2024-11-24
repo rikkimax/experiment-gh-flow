@@ -12,15 +12,17 @@ jobs:
       pull-requests: write
     steps:
     - uses: actions/checkout@v4
-    - uses: Songmu/tagpr@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        INPUT_config: .github/release.tagpr
     - name: Update version for next release
       shell: bash
       run: |
         chmod +x ./.github/scripts/increment_version.sh
-        current=$(cat ./.github/NEXT_VERSION)
+        current=$(cat ./.github/VERSION)
         echo $current
-        source ./.github/scripts/increment_version.sh -M "$current"
-        echo "${a[0]}.${a[1]}.${a[2]}" > .github/NEXT_VERSION
+        source ./.github/scripts/increment_version.sh
+        next=$(increment_version "$current" 0)
+        echo $next
+        echo $next > ./.github/NEXT_VERSION
+    - uses: Songmu/tagpr@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        INPUT_config: .github/release.tagpr
