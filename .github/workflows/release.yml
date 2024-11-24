@@ -4,7 +4,7 @@ on: push
 
 jobs:
 
-  release-trigger:
+  stable-release-trigger:
     if: github.ref == 'refs/heads/stable'
     runs-on: ubuntu-latest
     permissions:
