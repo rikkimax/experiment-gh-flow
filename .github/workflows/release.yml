@@ -21,6 +21,6 @@ jobs:
         bash -c "\
         current=$(cat ./.github/NEXT_VERSION) ;\
         echo $current ;\
-        source ./.github/scripts/increment_version.sh -M $current ;\
+        source ./.github/scripts/increment_version.sh -M "$current" ;\
         echo "${a[0]}.${a[1]}.${a[2]}" > .github/NEXT_VERSION \
         "
