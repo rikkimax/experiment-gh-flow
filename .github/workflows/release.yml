@@ -25,4 +25,5 @@ jobs:
     - uses: Songmu/tagpr@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        config: .github/release.tagpr
+      with:
+        config: './.github/release.tagpr'
