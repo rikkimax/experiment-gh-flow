@@ -1,0 +1,29 @@
+name: Create next release by PR
+
+on: push
+
+jobs:
+
+  release-trigger:
+    if: github.ref == 'refs/heads/stable'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - uses: actions/checkout@v4
+    - name: Update version for next release
+      shell: bash
+      run: |
+        chmod +x ./.github/scripts/increment_version.sh
+        current=$(cat ./.github/VERSION)
+        echo $current
+        source ./.github/scripts/increment_version.sh
+        next=$(increment_version "$current" 2)
+        echo $next
+        echo $next > ./.github/NEXT_VERSION
+    - uses: Songmu/tagpr@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        config: './.github/release.tagpr'
