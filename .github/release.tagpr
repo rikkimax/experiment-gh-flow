@@ -47,5 +47,5 @@
 	releaseBranch = master
 	versionFile = ./.github/VERSION
     commitPrefix = [Next Release]
-    changelog = false
+    changelog = true
     command = mv .github/NEXT_VERSION .github/VERSION
